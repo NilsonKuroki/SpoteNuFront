@@ -20,15 +20,19 @@ export const ButtonSave = styled.button`
 
 export const FormStyled = styled.form`
     width: 500px;
-    height: 50%;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     background-color: white;
-    padding: 30px;
     border-radius: 40px;
-    border: 4px solid var(--color-green);
+    border: 2px solid var(--color-green);
+
+    @media(max-width: 800px){
+        width: 90%;
+        min-width: 350px;
+    }
 `
 
 export const TextFieldStyled = styled(TextField)`
@@ -37,4 +41,7 @@ export const TextFieldStyled = styled(TextField)`
 
 export const Titulo = styled.h1`
     font: 600 2rem Montserrat;
+`
+export const TextError = styled.p`
+    color: red
 `

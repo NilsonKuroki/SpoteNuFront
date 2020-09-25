@@ -1,49 +1,50 @@
-import React, {useEffect} from 'react'
+import React, {useEffect,useState} from 'react'
 import {Logo} from '../../components/logo'
 import {
-    ContainerHomePage,
-    Menu,
-    ButtonMenu,
-    IconButton,
-    Titulo
+    ContainerHomePage
 } from './styled'
-import {useHistory} from 'react-router-dom'
-import Music from '../../images/musica.svg'
-import Add from '../../images/adicionar.svg'
-import Check from '../../images/direito.svg'
+import {OthersUsers} from "./OthersUsers"
+import {AdminMenu} from './AdminMenu'
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import {LogoutAccount} from '../../components/logoutAccount'
 
 export const HomePage = ()=>{
     const history = useHistory()
+    const [user, setUser] = useState({})
 
     useEffect(()=>{
         const token = localStorage.getItem('token')
         
-        if(token === null){
+        if(!token){
             history.push("/login")
         }
-    })
+
+        const userOnline = () =>{
+            axios.get("http://localhost:3001/user/user-online", {
+                headers: {authorization: token}
+            }).then((response)=>{
+                setUser(response.data)
+            }).catch((error)=>{
+                if(error.response.data.name === "TokenExpiredError"){
+                    history.push("/login")
+                }          
+            })
+        }
+        userOnline()
+    }, [history])
 
     return(
         <ContainerHomePage>
+            <LogoutAccount/>
             <Logo/>
-            <Titulo>O que deseja fazer?</Titulo>
-            <Menu>
-                <ButtonMenu onClick={()=>{history.push("/signup-admin")}}>
-                    <IconButton 
-                    src={Add} alt="https://www.flaticon.com/br/autores/dmitri13"/>
-                    <h2>Adicionar Administrador</h2>
-                </ButtonMenu>
-                <ButtonMenu onClick={()=>{history.push("/approved-bands")}}>
-                    <IconButton 
-                    src={Check} alt="https://www.flaticon.com/br/autores/freepik"/>
-                    <h2>Aprovar Bandas</h2>
-                </ButtonMenu>
-                <ButtonMenu>
-                    <IconButton 
-                    src={Music} alt="https://www.flaticon.com/br/autores/freepik"/>
-                    <h2>Gerenciar Generos Musicais</h2>
-                </ButtonMenu>
-            </Menu>
+            {
+                user.type === "admin"? 
+                <AdminMenu name={user.name}/>
+                :
+                <OthersUsers/>
+            }
+            
         </ContainerHomePage>
     )
 }

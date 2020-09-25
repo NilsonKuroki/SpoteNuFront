@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SpoteNuFront
 
-## Available Scripts
+## Stack
+Esse é um projeto de Frontend Web feito utilizando ReactJS; e como gerenciador de pacotes do NodeJS o npm.
+Sobre as divisões dos arquivos, foi criada quatro pastas, elas são: 
 
-In the project directory, you can run:
+1. components - responsáveis por components que vão em mais de uma page, e é colocada a parte para uso geral delas;
+2. customHooks - responsável por otimizar tarefas evitando a repetição da mesma linha de comando;
+3. pages - responsável por dividir as paginas do site e seus componentes com suas estilizações em arquivos separados;
+4. images - todas as imagens da aplicação se encontram nessa pasta;
 
-### `yarn start`
+## Sobre
+Este projeto é um dos ultimos projetos que criei no curso de desenvolvimento web fullstack oferecido pela labenu!
+A idéia era criar um projeto web fullstack usando como base o spotify.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Guia
+No desenvolvimento do Frontend, foi criado algumas paginas para cadastro de usuários, os usuários foram dividos em três tipos, eles são: administradores, ouvintes e bandas(interessados em divulgar seu trabalho como artistas, solo ou não, criam uma conta do tipo banda).
+Como criar uma aplicação completa demoraria muito mais que duas semanas, a aplicação foi focada no desenvolvimento de algumas funcionalidades que o administrador poderia ter(qualquer usuário tem acesso a aplicação, porém o unico usuário no momento que possuí algo para fazer na aplicação é o administrador). Algumas das apliacações do usuário administrador são:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. Criar novas contas do tipo administrador;
+2. Ter um local onde ele possa ter acesso a todos os usuários do tipo banda e possa aprovar esses usuários a divulgar seu trabalho no nosso sistema;
+3. Existe mais uma funcionalidade que é gerenciamento de generos musicais, mas não foi implementada;
 
-### `yarn test`
+Conta para se fazer login como administrador: 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+nickname: admin nickname
+email: admin@gmail.com
+senha: 0123456789
+```
 
-### `yarn build`
+Conta para se fazer login como ouvinte(como o ouvinte e a banda não possui aplicação a pagina mostrada para esta conta seria a mesma que logar com uma conta do tipo banda):
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+nickname: eduardinho
+email: eduardo@gmail.com
+senha: 0123456789
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+A aplicação do backend foi feita a parte e você pode encontra-la [aqui](https://github.com/NilsonKuroki/SpoteNuFront), para que consiga ver todas as paginas do frontend, é necessário que esteja rodando a do backend ao mesmo tempo!

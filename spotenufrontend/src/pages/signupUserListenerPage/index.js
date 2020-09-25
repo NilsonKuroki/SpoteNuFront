@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState}from "react"
 import {FormSignupListenerAndAdmin} from "../../components/formSignupListenerAndAdmin"
 import {ContainerSignupPage} from "./styled"
 import {Logo} from '../../components/logo/index'
@@ -8,12 +8,14 @@ import axios from 'axios'
 
 export const SignupUserListenerPage = () =>{
     const history = useHistory()
+    const [errorDb, setErrorDb] = useState()
 
     const {form, onChange} = useForm({
         name: "",
         nickname: "",
         email: "",
-        password: ""
+        password: "",
+        confirmPassword: ""
     })
 
     const handlerInputChange = event =>{
@@ -31,16 +33,15 @@ export const SignupUserListenerPage = () =>{
         axios.post("http://localhost:3001/user/signup-not-paying-listener", body)
         .then((response)=>{
             localStorage.setItem('token', response.data.token)
+            history.push("/home")
         }).catch((error)=>{
-            console.log(error)
+            setErrorDb(error.response.data.message)
         })
-
-    history.push("/home")
 }
     return(
         <ContainerSignupPage>
             <Logo/>
-            <FormSignupListenerAndAdmin titulo="Cadastre-se!"onchange={handlerInputChange} form={form} cadaster={cadasterUser} />
+            <FormSignupListenerAndAdmin titulo="Cadastre-se!"onchange={handlerInputChange} form={form} cadaster={cadasterUser} minimo="6" error={errorDb}/>
         </ContainerSignupPage>
     )
 }

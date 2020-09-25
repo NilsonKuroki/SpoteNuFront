@@ -13,7 +13,7 @@ export const ApprovedBandPage = () =>{
     const history = useHistory()
 
     useEffect(()=>{
-        if(token===null){
+        if(!token){
             history.push("/login")
         }
         

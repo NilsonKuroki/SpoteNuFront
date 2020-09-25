@@ -8,12 +8,12 @@ export const Cadaster = () =>{
         <ContainerCadaster>
                 <Title>Cadastre-se</Title>
                 <ContainerText>
-                    <SubTitle >Quer conhecer novos artistas e bandas?</SubTitle>
+                    <SubTitle><center>Quer conhecer novos artistas e bandas?    </center></SubTitle>
                     <Text onClick={()=>{history.push("/signup-listener")}}>Clique aqui!</Text>
-                    </ContainerText>
-                    <ContainerText>
-                    <SubTitle>Tem uma banda ou é um artista solo??</SubTitle>
-                    <Text onClick={()=>{history.push("/signup-band")}}>Clique aqui e divulgue seu trabalho!</Text>
+                </ContainerText>
+                <ContainerText>
+                    <SubTitle><center>Tem uma banda ou é um artista solo??</center></SubTitle>
+                    <Text onClick={()=>{history.push("/signup-band")}}><center>Clique aqui e divulgue seu trabalho!</center></Text>
                 </ContainerText>
                 
         </ContainerCadaster>

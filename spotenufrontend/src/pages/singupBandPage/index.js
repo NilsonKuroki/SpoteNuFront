@@ -25,6 +25,7 @@ export const SignupBandPage = () =>{
         nickname: "",
         email: "",
         password: "",
+        confirmPassword: "",
         description: ""
     })
 
@@ -33,7 +34,7 @@ export const SignupBandPage = () =>{
         onChange(name, value)
     }
 
-    const cadasterBand = async()=>{
+    const cadasterBand = ()=>{
         const body = {
             name: form.name,
             nickname: form.nickname,
@@ -41,10 +42,13 @@ export const SignupBandPage = () =>{
             password: form.password,
             description: form.description
         }
-        const response = await axios.post("http://localhost:3001/user/signup-band", body)
-        console.log(response.data)
-
-        history.push("/login")
+        axios.post("http://localhost:3001/user/signup-band", body)
+        .then((response)=>{
+            window.alert(response.data)
+            history.push("/login")
+        }).catch((error)=>{
+            console.log(error.data)
+        })
     }
 
     return(
@@ -60,7 +64,7 @@ export const SignupBandPage = () =>{
                     label="Name" 
                     type="text"
                     inputProps={{ 
-                        pattern: "[A-Za-z ]{3,}", 
+                        pattern: "[A-Za-z1-9 ]{3,}", 
                         title: "O nome deve conter 3 letras no mínimo"
                     }}
                     required/>
@@ -90,9 +94,14 @@ export const SignupBandPage = () =>{
                     value={form.password} 
                     label="senha" 
                     type="password" 
-                    // inputProps={{ 
-                    //     pattern: "/^.{6,}$/", 
-                    //     title: "A senha deve conter 10 letras/numeros no mínimo" }}
+                    required/>
+                <TextFieldStyled 
+                    id="standard-basic" 
+                    name="confirmPassword" 
+                    onChange={handlerInputChange} 
+                    value={form.confirmPassword} 
+                    label="confirme sua senha" 
+                    type="password" 
                     required/>
                 <TextFieldStyled
                     id="standard-basic" 

@@ -8,6 +8,7 @@ import Back from '../../images/back.svg'
 
 export const ButtonBack = () =>{
     const history = useHistory()
+
     return (
         <ContainerButtonBack>
             <BackButton onClick={()=>{history.goBack()}}>

@@ -34,7 +34,9 @@ export const LoginPage = ()=>{
                 history.push("/home")
             }
         }).catch((error)=>{
-            setError(error.response.data)
+            if(error.response.data.message === "TypeError: Cannot read property 'id' of undefined"){
+                setError("Wrong credentials")
+            }else{setError(error.response.data.message)}
         })
     }
 

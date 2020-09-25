@@ -1,5 +1,5 @@
 import React from "react"
-import {FormStyled, Titulo, TextFieldStyled, ButtonSave} from "./styled"
+import {FormStyled, Titulo, TextFieldStyled, ButtonSave, TextError} from "./styled"
 
 export const FormSignupListenerAndAdmin = (props)=>{
 
@@ -18,9 +18,10 @@ export const FormSignupListenerAndAdmin = (props)=>{
                     type="text"
                     inputProps={{ 
                         pattern: "[A-Za-z ]{3,}", 
-                        title: "O nome deve conter 3 letras no mínimo"
+                        title: "O nome deve conter 3 letras no mínimo, e sem números"
                     }}
-                    required/>
+                    required
+                />
                 <TextFieldStyled 
                     id="standard-basic" 
                     name="nickname" 
@@ -30,8 +31,9 @@ export const FormSignupListenerAndAdmin = (props)=>{
                     type="text"
                     inputProps={{ 
                         pattern: "[A-Za-z ]{3,}", 
-                        title: "O nome deve conter 3 letras no mínimo" }}
-                    required/>
+                        title: "O nome deve conter 3 letras no mínimo, e sem números" }}
+                    required
+                />
                 <TextFieldStyled 
                     id="standard-basic" 
                     name="email" 
@@ -39,18 +41,29 @@ export const FormSignupListenerAndAdmin = (props)=>{
                     value={props.form.email} 
                     label="Email" 
                     type="email" 
-                    required/>
+                    required
+                />
+                {props.error === "email invalid"? <TextError>{props.error}</TextError>: ""}
                 <TextFieldStyled 
                     id="standard-basic" 
                     name="password" 
                     onChange={props.onchange} 
                     value={props.form.password} 
-                    label="Password" 
+                    label={`Senha (minimo ${props.minimo} caracteres)`}
                     type="password" 
-                    // inputProps={{ 
-                    //     pattern: "/^.{6,}$/", 
-                    //     title: "A senha deve conter 10 letras/numeros no mínimo" }}
+                    required
+                />
+                {props.error ===`Sua senha tem que possuir no minimo ${props.minimo} caracteres`?<TextError>{props.error}</TextError>: ""}
+                <TextFieldStyled 
+                    id="standard-basic" 
+                    name="confirmPassword" 
+                    onChange={props.onchange} 
+                    value={props.form.confirmPassword} 
+                    label="Confirme sua senha" 
+                    type="password" 
+                    
                     required/>
+                {props.form.password !== props.form.confirmPassword? "As senhas devem coincidir": ""}
                 <ButtonSave onClick={props.cadaster}>Salvar</ButtonSave>
         </FormStyled>
         

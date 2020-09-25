@@ -14,7 +14,7 @@ export const Titulo = styled.h1`
 `
 
 export const ContainerBands = styled.div`
-    width: 60%;
+    width: 75%;
     background-color: white;
     margin: 20px 0;
     border-radius: 25px;
@@ -22,6 +22,10 @@ export const ContainerBands = styled.div`
     flex-direction: column;
     align-items: center;
     min-height: 70vh;
+
+    @media(max-width: 800px){
+        width: 97%;
+    }
 `
 
 export const ContainerCardBand = styled.div`

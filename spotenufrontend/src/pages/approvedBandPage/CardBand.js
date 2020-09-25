@@ -21,7 +21,6 @@ export const CardBand = (props)=>{
             </ContainerCardText>
             <ContainerCardText> 
             <p><b>Email: </b>{props.email}</p>
-            
             {props.approved === 1? "esta banda já foi aprovada!":<ButtonApproved onClick={approve}>aprovar!</ButtonApproved>}
             </ContainerCardText>
         </ContainerCardBand>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import {useHistory} from 'react-router-dom'
 import {FormSignupListenerAndAdmin} from "../../components/formSignupListenerAndAdmin"
 import {ContainerSignupAdmin} from "./styled"
@@ -10,9 +10,10 @@ import axios from "axios"
 export const SignupAdminPage = ()=>{
     const history = useHistory()
     const token = localStorage.getItem('token')
+    const [errorDb, setErrorDb] = useState("")
 
     useEffect(()=>{
-        if(token=== null){
+        if(!token){
             history.push("/login")
         }
     },[token, history])
@@ -21,7 +22,8 @@ export const SignupAdminPage = ()=>{
         name: "",
         nickname: "",
         email: "",
-        password: ""
+        password: "",
+        confirmPassword: ""
     })
 
     const handlerInputChange = event =>{
@@ -42,18 +44,17 @@ export const SignupAdminPage = ()=>{
                 }
             }).then((response)=>{
                 window.alert(response.data)
+                history.push("/home")
             }).catch((error)=>{
-                console.log(error)
+                setErrorDb(error.response.data.message)
             })
-
-        history.push("/home")
     }
 
     return(
         <ContainerSignupAdmin>
             <ButtonBack/>
             <Logo/>
-            <FormSignupListenerAndAdmin titulo ="Cadastrar novo admin:" onchange={handlerInputChange} form={form} cadaster={cadasterAdmin} />
+            <FormSignupListenerAndAdmin titulo ="Cadastrar novo admin:" onchange={handlerInputChange} form={form} cadaster={cadasterAdmin} minimo="10" error={errorDb}/>
         </ContainerSignupAdmin>
     )
 }

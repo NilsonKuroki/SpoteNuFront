@@ -16,7 +16,7 @@ export const Login = (props)=>{
             <TextFieldStyled 
                 id="standard-basic" 
                 name="login" 
-                label="Name or Nickname" 
+                label="Nickname ou Email" 
                 onChange={props.onchange} 
                 value={props.form.login} 
                 required
@@ -24,7 +24,7 @@ export const Login = (props)=>{
             <TextFieldStyled 
                 id="standard-basic" 
                 name="password" 
-                label="Password" 
+                label="Senha" 
                 onChange={props.onchange} 
                 value={props.form.password}
                 type="password" 

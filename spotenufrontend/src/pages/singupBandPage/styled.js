@@ -3,12 +3,29 @@ import {TextField} from '@material-ui/core'
  
 export const ContainerSignupPage = styled.div`
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--color-black);
     display:  flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+`
+export const FormStyled = styled.form`
+    width: 500px;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 40px;
+    border: 2px solid var(--color-green);
+
+    @media(max-width: 800px){
+        width: 80vw;
+
+    }
 `
 
 export const ButtonSave = styled.button`
@@ -28,18 +45,6 @@ export const ButtonSave = styled.button`
     }
 `
 
-export const FormStyled = styled.form`
-    width: 500px;
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: white;
-    padding: 30px;
-    border-radius: 40px;
-    border: 4px solid var(--color-green);
-`
 
 export const TextFieldStyled = styled(TextField)`
     width: 80%;
